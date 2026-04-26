@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Font Converter — TTF/OTF → WOFF2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="convert_ttf.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="badge"><span class="badge-dot"></span>TTF · OTF → WOFF2</div>
+        <h1>Font<br>Converter</h1>
+        <p class="sub">Przekonwertuj plik</p>
+
+        <div class="formats">
+            <div class="fmt fmt-ttf"><span class="fmt-icon">TTF</span>TrueType</div>
+            <div class="fmt fmt-otf"><span class="fmt-icon">OTF</span>OpenType</div>
+            <span class="fmt-arrow">→</span>
+            <div class="fmt fmt-woff2"><span class="fmt-icon">W2</span>WOFF2</div>
+        </div>
+
+        <div class="dropzone" id="dz">
+            <input type="file" id="fileInput" accept=".ttf,.otf" />
+            <div class="dz-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 3v13M8 8l4-5 4 5" />
+                </svg>
+            </div>
+            <div class="dz-title">Upuść plik tutaj</div>
+            <div class="dz-sub">lub kliknij, aby wybrać &middot; .ttf / .otf</div>
+            <div class="dz-file" id="fileInfo">
+                <div class="file-icon" id="fileExt">TTF</div>
+                <div>
+                    <div class="file-name" id="fileName"></div>
+                    <div class="file-size" id="fileSize"></div>
+                </div>
+                <!-- <button class="file-remove" id="removeBtn" title="Usuń">X</button> -->
+            </div>
+        </div>
+
+        <button class="btn" id="convertBtn" onclick="convertFont()" disabled>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+            Konwertuj do WOFF2
+        </button>
+
+        <div class="progress" id="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="result" id="result">
+            <div class="result-info">
+                <div class="result-name" id="resultName"></div>
+                <div class="result-meta">gotowe do pobrania</div>
+            </div>
+            <a class="dl-btn" id="dlBtn" href="#" target="_blank">Pobierz</a>
+        </div>
+
+        <div class="error" id="error"></div>
+
+        <p class="footer"></p>
+    </div>
+
+    <script src="convert_ttf.js"></script>
+</body>
+
+</html>

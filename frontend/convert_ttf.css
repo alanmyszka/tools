@@ -1,0 +1,389 @@
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    :root {
+        --bg: #f9f8f6;
+        --surface: #ffffff;
+        --surface2: #f1f0ec;
+        --border: rgba(0, 0, 0, .1);
+        --border2: rgba(0, 0, 0, .18);
+        --text: #18181a;
+        --muted: #6b6b6b;
+        --hint: #a0a0a0;
+        --success-bg: #eaf3de;
+        --success-border: rgba(63, 122, 17, .25);
+        --success-text: #3b6d11;
+        --danger-bg: #fcebeb;
+        --danger-border: rgba(163, 45, 45, .25);
+        --danger-text: #a32d2d;
+        --info-bg: #e6f1fb;
+        --radius: 8px;
+        --radius-lg: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg: #111110;
+            --surface: #1c1c1a;
+            --surface2: #252523;
+            --border: rgba(255, 255, 255, .1);
+            --border2: rgba(255, 255, 255, .2);
+            --text: #f0efea;
+            --muted: #9a9990;
+            --hint: #5e5d58;
+            --success-bg: #17340a;
+            --success-border: rgba(100, 200, 50, .2);
+            --success-text: #c0dd97;
+            --danger-bg: #2e1010;
+            --danger-border: rgba(200, 60, 60, .2);
+            --danger-text: #f09595;
+            --info-bg: #0a1e35;
+        }
+    }
+
+    body {
+        font-family: 'DM Mono', monospace;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+    }
+
+    .wrap {
+        width: 100%;
+        max-width: 540px;
+    }
+
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        background: var(--success-bg);
+        color: var(--success-text);
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-bottom: 1.25rem;
+    }
+
+    .badge-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--success-text);
+    }
+
+    h1 {
+        font-family: 'Syne', sans-serif;
+        font-size: clamp(36px, 8vw, 56px);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -.03em;
+        margin-bottom: .5rem;
+    }
+
+    .sub {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 2rem;
+    }
+
+    .formats {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .fmt {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 12px;
+        color: var(--muted);
+        background: var(--surface);
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius);
+        padding: 6px 12px;
+    }
+
+    .fmt-icon {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: 700;
+    }
+
+    .fmt-ttf .fmt-icon {
+        background: #1D9E75;
+        color: #E1F5EE;
+    }
+
+    .fmt-otf .fmt-icon {
+        background: #7F77DD;
+        color: #EEEDFE;
+    }
+
+    .fmt-woff2 .fmt-icon {
+        background: #378ADD;
+        color: #E6F1FB;
+    }
+
+    .fmt-arrow {
+        color: var(--hint);
+        font-size: 18px;
+    }
+
+    .dropzone {
+        position: relative;
+        border: 1.5px dashed var(--border2);
+        border-radius: var(--radius-lg);
+        padding: 2.5rem 2rem;
+        text-align: center;
+        cursor: pointer;
+        background: var(--surface);
+        transition: border-color .2s, background .2s;
+    }
+
+    .dropzone:hover,
+    .dropzone.drag {
+        border-color: #378ADD;
+        background: var(--info-bg);
+    }
+
+    .dropzone input {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+    }
+
+    .dz-icon {
+        width: 52px;
+        height: 52px;
+        margin: 0 auto 1rem;
+        border-radius: 13px;
+        background: var(--surface2);
+        border: 0.5px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dz-icon svg {
+        width: 24px;
+        height: 24px;
+        stroke: var(--muted);
+    }
+
+    .dz-title {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 4px;
+    }
+
+    .dz-sub {
+        font-size: 12px;
+        color: var(--muted);
+    }
+
+    .dz-file {
+        display: none;
+        align-items: center;
+        gap: 10px;
+        background: var(--surface2);
+        border-radius: var(--radius);
+        padding: 10px 14px;
+        margin-top: 1rem;
+        text-align: left;
+    }
+
+    .dz-file.show {
+        display: flex;
+    }
+
+    .file-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .file-name {
+        font-size: 13px;
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .file-size {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 2px;
+    }
+
+    .file-remove {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--muted);
+        font-size: 20px;
+        line-height: 1;
+        padding: 0 4px;
+    }
+
+    .file-remove:hover {
+        color: var(--text);
+    }
+
+    .btn {
+        width: 100%;
+        margin-top: 1rem;
+        padding: 14px;
+        background: var(--text);
+        color: var(--bg);
+        border: none;
+        border-radius: var(--radius);
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: .04em;
+        cursor: pointer;
+        transition: opacity .15s, transform .1s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .btn:hover:not(:disabled) {
+        opacity: .82;
+    }
+
+    .btn:active:not(:disabled) {
+        transform: scale(.98);
+    }
+
+    .btn:disabled {
+        opacity: .3;
+        cursor: not-allowed;
+    }
+
+    .progress {
+        display: none;
+        margin-top: 1rem;
+        background: var(--surface2);
+        border-radius: 100px;
+        height: 3px;
+        overflow: hidden;
+    }
+
+    .progress.show {
+        display: block;
+    }
+
+    .progress-bar {
+        height: 100%;
+        width: 0%;
+        background: var(--text);
+        transition: width .3s ease;
+    }
+
+    .result {
+        display: none;
+        margin-top: 1rem;
+        background: var(--success-bg);
+        border: 0.5px solid var(--success-border);
+        border-radius: var(--radius);
+        padding: 14px 16px;
+    }
+
+    .result.show {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .result-info {
+        flex: 1;
+    }
+
+    .result-name {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--success-text);
+    }
+
+    .result-meta {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 2px;
+    }
+
+    .dl-btn {
+        padding: 8px 16px;
+        background: var(--text);
+        color: var(--bg);
+        border: none;
+        border-radius: var(--radius);
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+        text-decoration: none;
+        display: inline-block;
+        transition: opacity .15s;
+    }
+
+    .dl-btn:hover {
+        opacity: .8;
+    }
+
+    .error {
+        display: none;
+        margin-top: 1rem;
+        background: var(--danger-bg);
+        border: 0.5px solid var(--danger-border);
+        border-radius: var(--radius);
+        padding: 12px 16px;
+        font-size: 13px;
+        color: var(--danger-text);
+    }
+
+    .error.show {
+        display: block;
+    }
+
+    .footer {
+        margin-top: 2rem;
+        font-size: 11px;
+        color: var(--hint);
+        text-align: center;
+        letter-spacing: .02em;
+    }

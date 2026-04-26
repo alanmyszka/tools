@@ -1,0 +1,4 @@
+/.venv/
+/backend/storage/converted/*
+__pycache__
+.env

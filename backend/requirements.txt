@@ -3,3 +3,4 @@ uvicorn
 python-multipart
 fonttools
 brotli
+python-dotenv

@@ -1,9 +1,22 @@
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.tools.convert_ttf import convert_ttf, download
 
-app = FastAPI(title="Tools API")
+load_dotenv()
+
+ENV = os.getenv("ENVIRONMENT", "dev")
+
+ENABLE_DOCS = ENV != "prod"
+
+app = FastAPI(
+    title="Tools API",
+    docs_url="/api/swagger" if ENABLE_DOCS else None,
+    redoc_url="/api/redoc" if ENABLE_DOCS else None,
+    openapi_url="/api/openapi.json" if ENABLE_DOCS else None,
+)
 
 app.add_middleware(
     CORSMiddleware,

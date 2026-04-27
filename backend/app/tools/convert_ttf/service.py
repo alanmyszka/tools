@@ -3,12 +3,14 @@ import tempfile
 import uuid
 from fontTools.ttLib import TTFont
 
-BASE_DIR = "storage/converted"
+BASE_DIR = "storage/tools/convert_ttf/files"
 os.makedirs(BASE_DIR, exist_ok=True)
 
 
 async def convert_ttf_to_woff2(file):
     file_id = str(uuid.uuid4())
+
+    original_name = os.path.splitext(file.filename)[0]
 
     suffix = os.path.splitext(file.filename)[1]
 
@@ -22,10 +24,11 @@ async def convert_ttf_to_woff2(file):
         font = TTFont(input_path)
         font.flavor = "woff2"
         font.save(output_path)
-    except Exception as e:
-        raise RuntimeError(f"Font conversion failed: {str(e)}")
     finally:
         if os.path.exists(input_path):
             os.remove(input_path)
 
-    return file_id
+    return {
+        "file_id": file_id,
+        "original_name": original_name
+    }

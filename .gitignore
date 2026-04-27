@@ -1,4 +1,5 @@
 /.venv/
-/backend/storage/converted/*
+/backend/storage/tools/convert_ttf/files/*
+/backend/storage/tools/convert_ttf/meta/*
 __pycache__
 .env

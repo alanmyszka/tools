@@ -3,3 +3,4 @@
 /backend/storage/tools/convert_ttf/meta/*
 __pycache__
 .env
+!.gitkeep

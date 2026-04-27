@@ -55,11 +55,27 @@
         align-items: center;
         justify-content: center;
         padding: 2rem 1rem;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image:
+            linear-gradient(var(--border) 1px, transparent 1px),
+            linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 48px 48px;
+        pointer-events: none;
+        z-index: 0;
     }
 
     .wrap {
         width: 100%;
         max-width: 540px;
+        position: relative;
+        z-index: 1;
     }
 
     .badge {
